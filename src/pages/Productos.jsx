@@ -1,4 +1,4 @@
-import Productos from '../components/productos';
+import Productos from '../components/productos.jsx';
 
 const Inicio = () => {
   
