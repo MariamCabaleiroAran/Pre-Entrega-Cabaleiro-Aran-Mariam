@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import { Link } from 'react-router-dom';
 import { CarritoContext } from "../context/CarritoContext";
 import styles from "../components/Productos.module.css";
 
@@ -14,7 +15,6 @@ const UltimosDias = () => {
     fetch(URL)
       .then((respuesta) => respuesta.json())
       .then((datos) => {
-        // Mostramos los últimos 4 productos del array
         const ultimos = datos.slice(-4);
         setProductos(ultimos);
       })
@@ -40,6 +40,7 @@ const UltimosDias = () => {
             <h3>{producto.title}</h3>
             <p>${producto.price}</p>
             <button onClick={() => agregarAlCarrito(producto)}>Agregar</button>
+            <Link to={`/ultimosdias/${producto.id}`}>Detalles</Link>
           </div>
         ))}
       </div>

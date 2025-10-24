@@ -16,10 +16,9 @@ const ProductoDetalle = () => {
     return <p>Cargando ......</p>
   
   return(
-    <>
-      <h2>Detalles del Producto Nro {id}</h2>
-      <img src={producto.image} alt={producto.title} width={100} height={100} />
+    <>      
       <h3>{producto.title}</h3>
+      <img src={producto.image} alt={producto.title} width={100} height={100} />
       <p>{producto.description}</p>
     </>
     

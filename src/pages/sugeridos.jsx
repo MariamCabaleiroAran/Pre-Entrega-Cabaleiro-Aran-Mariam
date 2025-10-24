@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import { Link } from 'react-router-dom';
 import { CarritoContext } from "../context/CarritoContext";
 import styles from "../components/Productos.module.css";
 
@@ -14,7 +15,6 @@ const Sugeridos = () => {
     fetch(URL)
       .then((respuesta) => respuesta.json())
       .then((datos) => {
-        // Elegimos 4 productos aleatorios
         const aleatorios = [...datos].sort(() => 0.5 - Math.random()).slice(0, 4);
         setProductos(aleatorios);
       })
@@ -40,6 +40,7 @@ const Sugeridos = () => {
             <h3>{producto.title}</h3>
             <p>${producto.price}</p>
             <button onClick={() => agregarAlCarrito(producto)}>Agregar</button>
+            <Link to={`/sugeridos/${producto.id}`}>Detalles</Link>
           </div>
         ))}
       </div>
