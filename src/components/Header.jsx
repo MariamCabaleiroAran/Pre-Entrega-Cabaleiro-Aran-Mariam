@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { CarritoContext } from "../context/CarritoContext";
-import Navbar from './NavBar';
+import Navbar from './Navbar';
 import styles from './Header.module.css';
 import BagIcon from '../assets/BagIcon';
 import { Link } from 'react-router-dom';
