@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer className={styles.footer}>
       <p className={styles.copyright}>
-        © {anioActual} E-Commerce con React. Todos los derechos reservados.
+        © {anioActual} Uroko Tienda. Todos los derechos reservados.
       </p>
     </footer>
   );

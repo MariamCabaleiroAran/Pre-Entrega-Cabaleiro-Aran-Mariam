@@ -1,18 +1,21 @@
-import { useContext } from "react";
-import { CarritoContext } from "../context/CarritoContext";
-import Navbar from './NavBar';
+import { useContext } from 'react';
+import Navbar from './Navbar';
 import styles from './Header.module.css';
 import BagIcon from '../assets/BagIcon';
 import { Link } from 'react-router-dom';
+import { useAuthContext } from '../context/AuthContext';
+import { CarritoContext } from '../context/CarritoContext';
 
 const Header = () => {
   const { carrito } = useContext(CarritoContext);
+  const {usuario, logout} = useAuthContext();
+  const estaLogeado = !!usuario;
   const contadorEnCarrito = carrito.length;
 
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
-        E-Commerce con React 
+        Uroko Tienda 
       </div>
 
       <div className={styles.navbarContainer}>
@@ -20,6 +23,14 @@ const Header = () => {
       </div>
 
       <div className={styles.iconsContainer}>
+        { estaLogeado ? 
+          <button onClick={logout} className={styles.login}>Cerrar Sesion </button> 
+          :
+          <Link to="/login">
+            <button className={styles.login}>Ingresá</button>
+          </Link>
+        }
+        
         <div className={styles.iconoDeCarrito}>
           <Link to="/carrito">
             <BagIcon className={styles.icono} />

@@ -9,7 +9,7 @@ const Sugeridos = () => {
   const [error, setError] = useState(null);
   const { agregarAlCarrito } = useContext(CarritoContext);
 
-  const URL = "https://fakestoreapi.com/products";
+  const URL = "https://68dc9d6d7cd1948060aace06.mockapi.io/productos";
 
   useEffect(() => {
     fetch(URL)
@@ -27,20 +27,39 @@ const Sugeridos = () => {
 
   return (
     <div>
-      <h2>SUGERIDOS</h2>
+      <h2 className="font-bold text-3xl ml-8">Sugeridos</h2>
       <div className={styles.grid}>
         {productos.map((producto) => (
           <div key={producto.id} className={styles.card}>
             <img
-              src={producto.image}
+              src={producto.imagen}
               height={120}
               width={120}
-              alt={producto.title}
+              alt={producto.nombre}
             />
-            <h3>{producto.title}</h3>
-            <p>${producto.price}</p>
-            <button onClick={() => agregarAlCarrito(producto)}>Agregar</button>
-            <Link to={`/sugeridos/${producto.id}`}>Detalles</Link>
+            <h3 class="text-lg font-semibold text-gray-800 tracking-wide">
+  {producto.nombre}
+</h3>
+            <p>${producto.precio}</p>
+            <div className="flex gap-3 mt-3">
+  <button
+    onClick={() => agregarAlCarrito(producto)}
+    className="px-4 py-2 border border-gray-800 text-gray-800 rounded-lg 
+               hover:bg-gray-800 hover:text-white transition-all duration-200
+               active:scale-95"
+  >
+    Agregar
+  </button>
+
+  <Link
+    to={`/ultimosdias/${producto.id}`}
+    className="px-4 py-2 border border-gray-800 text-gray-800 rounded-lg 
+               hover:bg-gray-800 hover:text-white transition-all duration-200
+               active:scale-95"
+  >
+    Detalles
+  </Link>
+</div>
           </div>
         ))}
       </div>
