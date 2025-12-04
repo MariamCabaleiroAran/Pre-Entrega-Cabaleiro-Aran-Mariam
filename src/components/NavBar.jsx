@@ -1,21 +1,54 @@
 import { NavLink } from "react-router-dom";
-import styles from './Navbar.module.css'; 
-import { useAuthContext } from '../context/AuthContext';
+import { useAuthContext } from "../context/AuthContext";
 
-const Nav = () => { 
+const Nav = () => {
   const { usuario } = useAuthContext();
-  const esAdmin = usuario === 'admin';
+  const esAdmin = usuario?.usuario === "admin";
 
-    return (  
-        <nav style={{ backgroundColor: "#ffffffff", color: "white", padding: "10px" }}>  
-            <ul style={{ listStyle: "none", display: "flex", gap: "24px", padding: 0, margin: 0 }}>
-                <li><NavLink to={'/'}className={({ isActive }) => (isActive ? styles.active : styles.link)}>PRODUCTOS</NavLink> </li> 
-                <li><NavLink to="/ultimosdias"className={({ isActive }) => (isActive ? styles.active : styles.link)}>ULTIMOS DIAS</NavLink></li> 
-                <li><NavLink to="/sugeridos"className={({ isActive }) => (isActive ? styles.active : styles.link)}>SUGERIDOS</NavLink></li>
-                 {esAdmin && (<li><NavLink to="/admin" className={styles.link}>Admin</NavLink></li>)}   
-            </ul>  
-        </nav>  
-    );  
-}
+  const linkClasses =
+  "text-black !no-underline decoration-none md:text-lg text-2xl font-medium hover:text-gray-700 transition";
 
-export default Nav; 
+  return (
+    <nav>
+      <ul className="flex md:flex-row flex-col md:gap-10 gap-8">
+        <li>
+          <NavLink
+            to="/"
+            className={linkClasses}
+          >
+            PRODUCTOS
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/ultimosdias"
+            className={linkClasses}
+          >
+            ÚLTIMOS DÍAS
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/sugeridos"
+            className={linkClasses}
+          >
+            SUGERIDOS
+          </NavLink>
+        </li>
+
+        {esAdmin && (
+          <li>
+            <NavLink
+              to="/admin"
+              className={linkClasses}
+            >
+              Admin
+            </NavLink>
+          </li>
+        )}
+      </ul>
+    </nav>
+  );
+};
+
+export default Nav;

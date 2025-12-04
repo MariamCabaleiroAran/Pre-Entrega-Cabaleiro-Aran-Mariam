@@ -25,7 +25,7 @@ return (
             width={120}
             alt={producto.nombre}
           />
-          <h3 class="text-lg font-semibold text-gray-800 tracking-wide">
+          <h3 className="text-lg font-semibold text-gray-800 tracking-wide">
   {producto.nombre}
 </h3>
           <p>${producto.precio}</p>
@@ -42,8 +42,8 @@ return (
   <Link
     to={`/ultimosdias/${producto.id}`}
     className="px-4 py-2 border border-gray-800 text-gray-800 rounded-lg 
-               hover:bg-gray-800 hover:text-white transition-all duration-200
-               active:scale-95"
+             hover:bg-gray-800 hover:text-white transition-all duration-200
+             active:scale-95 no-underline-important"
   >
     Detalles
   </Link>

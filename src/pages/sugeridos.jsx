@@ -54,8 +54,8 @@ const Sugeridos = () => {
   <Link
     to={`/ultimosdias/${producto.id}`}
     className="px-4 py-2 border border-gray-800 text-gray-800 rounded-lg 
-               hover:bg-gray-800 hover:text-white transition-all duration-200
-               active:scale-95"
+             hover:bg-gray-800 hover:text-white transition-all duration-200
+             active:scale-95 no-underline-important"
   >
     Detalles
   </Link>

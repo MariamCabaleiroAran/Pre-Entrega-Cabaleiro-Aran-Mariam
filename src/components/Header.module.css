@@ -28,6 +28,7 @@
 .iconoDeCarrito {
   position: relative;
   cursor: pointer;
+  color: black;
 }
 
 .contadorDeCarrito {
@@ -46,4 +47,6 @@
 .icono {
   font-size: 24px;
   cursor: pointer;
+    color: black !important;
+  stroke: black !important;
 }

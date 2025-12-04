@@ -16,6 +16,7 @@ function App() {
 
   return (
     <>
+    <div className="grid min-h-dvh grid-rows-[auto_1fr_auto]">
       <Header />
       <Routes>
         <Route path="/" element={<Inicio />} />
@@ -25,10 +26,11 @@ function App() {
         <Route path="/productos/:id" element={<ProductoDetalle />} />
         <Route path="/sugeridos/:id" element={<DetalleSugerido />} />
         <Route path="/ultimosdias/:id" element={<DetalleUltimosdias />} />
-        <Route path="/carrito" element={<Carrito />} />
+        <Route path="/carrito" element={<RutaProtegida> <Carrito /> </RutaProtegida>} />
         <Route path="/admin" element={<RutaProtegida> <Admin /> </RutaProtegida>} />
       </Routes>
       <Footer />
+      </div>
     </>
   );
 }
