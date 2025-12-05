@@ -4,3 +4,10 @@
   text-decoration: none !important;
   color: #000 !important;
 }
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  height: 0;
+  width: 0;
+  display: none;
+}

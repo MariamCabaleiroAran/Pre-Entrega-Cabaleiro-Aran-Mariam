@@ -5,8 +5,8 @@ const BarraBusqueda = () => {
   const { busqueda, setBusqueda } = useSearch();
   const navigate = useNavigate();
 
-  const manejarBusqueda = (evento) => {
-    const valor = evento.target.value;
+  const manejarBusqueda = (e) => {
+    const valor = e.target.value;
     setBusqueda(valor);
 
     if (valor.trim()) {
@@ -14,12 +14,15 @@ const BarraBusqueda = () => {
     }
   };
 
+  const limpiarBusqueda = () => {
+    setBusqueda("");
+  };
+
   return (
     <form className="max-w-md mx-auto">
       <div className="relative">
-        
-        {/* Ícono a la derecha */}
-        <div className="absolute inset-y-0 end-3 flex items-center pointer-events-none">
+        {/* LUPA A LA DERECHA */}
+        <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none">
           <svg
             className="w-4 h-4 text-body"
             aria-hidden="true"
@@ -38,14 +41,26 @@ const BarraBusqueda = () => {
           </svg>
         </div>
 
+        {/* INPUT */}
         <input
           type="search"
           id="search"
-          className="block w-full p-3 pe-10 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body"
+          className="block w-full p-3 pr-10 pl-4 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body"
           placeholder="Buscar Productos..."
           value={busqueda}
           onChange={manejarBusqueda}
         />
+
+        {/* ❌ BOTÓN PARA LIMPIAR (solo aparece si hay texto) */}
+        {busqueda && (
+          <button
+            type="button"
+            onClick={limpiarBusqueda}
+            className="absolute inset-y-0 right-10 flex items-center text-gray-500 hover:text-black"
+          >
+            ✕
+          </button>
+        )}
       </div>
     </form>
   );
