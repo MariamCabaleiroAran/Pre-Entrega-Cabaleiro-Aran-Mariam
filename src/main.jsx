@@ -6,6 +6,7 @@ import App from './App.jsx';
 import './index.css';
 import { AuthProvider } from "./context/AuthContext";
 import { ProductosProvider } from './context/ProductosContext'; 
+import { SearchProvider } from './context/BusquedaContext.jsx';
 
 
 createRoot(document.getElementById('root')).render(
@@ -13,9 +14,11 @@ createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <AuthProvider>
         <ProductosProvider>
+          <SearchProvider> 
           <CarritoProvider>
             <App />
           </CarritoProvider>
+          </SearchProvider> 
         </ProductosProvider>
       </AuthProvider>
     </BrowserRouter>

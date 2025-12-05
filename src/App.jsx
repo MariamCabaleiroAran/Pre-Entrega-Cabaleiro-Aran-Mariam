@@ -11,6 +11,7 @@ import DetalleUltimosdias from "./pages/DetalleUltimosdias.jsx";
 import Footer from './components/Footer.jsx';
 import Sugeridos from "./pages/sugeridos.jsx";
 import Login from "./pages/Login";
+import ResultadosBusqueda from "./components/ResultadosBusqueda";
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/Ultimosdias" element={<Ultimosdias />} />
         <Route path="/Sugeridos" element={<Sugeridos />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/busqueda" element={<ResultadosBusqueda />} />
         <Route path="/productos/:id" element={<ProductoDetalle />} />
         <Route path="/sugeridos/:id" element={<DetalleSugerido />} />
         <Route path="/ultimosdias/:id" element={<DetalleUltimosdias />} />

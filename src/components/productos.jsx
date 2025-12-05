@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { CarritoContext } from '../context/CarritoContext';
 import { useProductosContext } from "../context/ProductosContext";
 import styles from './Productos.module.css';
+import { useState } from 'react';
 
 const Productos = () => {
   
@@ -10,14 +11,27 @@ const Productos = () => {
   const { productos, cargando, error } = useProductosContext();
   const { agregarAlCarrito } = useContext(CarritoContext);
 
-  if (cargando) return 'Cargando productos...';
+    // Logica de Paginacion 
+  const productosPorPagina = 8; 
+  const [paginaActual, setPaginaActual] = useState(1);
+  
+  if (cargando) return "Cargando productos...";
   if (error) return error;
+
+  // Calcular el índice de los productos a mostrar en la página actual
+  const indiceUltimoProducto = paginaActual * productosPorPagina;
+  const indicePrimerProducto = indiceUltimoProducto - productosPorPagina;
+  const productosActuales = productos.slice(indicePrimerProducto, indiceUltimoProducto);
+
+  // Cambiar de pagina
+  const totalPaginas = Math.ceil(productos.length / productosPorPagina);
+  const cambiarPagina = (numeroPagina) => setPaginaActual(numeroPagina);
 
 return (
   <div>
     <h2 className="font-bold text-3xl ml-8">Productos</h2>
     <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-      {productos.map((producto) => (
+      {productosActuales.map((producto) => (
         <div key={producto.id} className={styles.card}>
           <img
             src={producto.imagen}
@@ -49,8 +63,27 @@ return (
   </Link>
 </div>
         </div>
+        
       ))}
     </div>
+
+ {/* Paginador */}
+      <div className="flex justify-center gap-2 my-8">
+        {Array.from({ length: totalPaginas }, (_, indice) => (
+          <button
+            key={indice + 1}
+            className={`px-4 py-2 rounded ${
+              paginaActual === indice + 1 
+                ? "bg-black text-white" 
+                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+            }`}
+            onClick={() => cambiarPagina(indice + 1)}
+          >
+            {indice + 1}
+          </button>
+        ))}
+      </div>
+
   </div>
 )};
 
