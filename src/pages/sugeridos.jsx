@@ -28,7 +28,7 @@ const Sugeridos = () => {
   return (
     <div>
       <h2 className="font-bold text-3xl ml-8">Sugeridos</h2>
-      <div className={styles.grid}>
+      <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
         {productos.map((producto) => (
           <div key={producto.id} className={styles.card}>
             <img
