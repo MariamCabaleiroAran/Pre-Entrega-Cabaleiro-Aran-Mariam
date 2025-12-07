@@ -1,13 +1,11 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
-import { CarritoContext } from "../context/CarritoContext";
 import styles from "../components/Productos.module.css";
 
 const Sugeridos = () => {
   const [productos, setProductos] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
-  const { agregarAlCarrito } = useContext(CarritoContext);
 
   const URL = "https://68dc9d6d7cd1948060aace06.mockapi.io/productos";
 
@@ -42,14 +40,6 @@ const Sugeridos = () => {
 </h3>
             <p>${producto.precio}</p>
             <div className="flex gap-3 mt-3">
-  <button
-    onClick={() => agregarAlCarrito(producto)}
-    className="px-4 py-2 border border-gray-800 text-gray-800 rounded-lg 
-               hover:bg-gray-800 hover:text-white transition-all duration-200
-               active:scale-95"
-  >
-    Agregar
-  </button>
 
   <Link
     to={`/ultimosdias/${producto.id}`}
@@ -57,7 +47,7 @@ const Sugeridos = () => {
              hover:bg-gray-800 hover:text-white transition-all duration-200
              active:scale-95 no-underline-important"
   >
-    Detalles
+    Ver producto
   </Link>
 </div>
           </div>

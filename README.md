@@ -1,6 +1,8 @@
-Instrucciones de instalación y uso del proyecto
+# E-Commerce con React JS
 
- 1. Clonar el repositorio
+## Instrucciones de instalación y uso del proyecto
+
+1. Clonar el repositorio
 
 git clone https://github.com/MariamCabaleiroAran/Pre-Entrega-Cabaleiro-Aran-Mariam.git
 
@@ -8,161 +10,160 @@ Ingresar a la carpeta del proyecto:
 
 cd Pre-Entrega-Cabaleiro-Aran-Mariam.git
 
- 2. Instalar dependencias: 
+2. Instalar dependencias: 
 
+```bash
 npm install
+```
 
-3. Variables de entorno (si corresponde)
+3. Iniciar el proyecto
 
-Si tu proyecto NO usa .env, podés borrar esta sección.
-
-Ejemplo:
-
-Crear un archivo .env en la raíz del proyecto:
-
-VITE_API_URL=https://68dc9d6d7cd1948060aace06.mockapi.io/productos
-
-4. Iniciar el proyecto
-
+```bash
 npm run dev
-
+```
 
 El proyecto estará disponible en:
 👉 http://localhost:5173
 
-5. Cómo usar el e-commerce
+## Cómo usar el e-commerce
 
-📍 Navegación principal
+### Navegación principal: Desde el menú podés acceder a:
 
-Desde el menú podés acceder a:
+- **Productos**
 
--Productos
+- **Últimos días** Muestra los últimos 4 productos del listado.
 
--Últimos días
+- **Sugeridos** Muestra 4 productos aleatorios desde la API cada vez que se entra.
 
--Sugeridos
+- **Carrito**
 
--Carrito
+- **Login**
 
--Login
+- **Gestión de Productos (solo administradores)**
 
--Gestión de Productos (solo administradores)
 
--En mobile, aparece como menú hamburguesa.
+## Catálogo de productos
 
-6. Catálogo de productos
+### En la sección Productos se puede:
 
-En la sección Productos se puede:
+- `Ver el listado completo.`
 
--Ver el listado completo.
+- `Abrir los detalles de cada producto.`
 
--Abrir los detalles de cada producto.
+- `Agregar productos al carrito.`
 
--Agregar productos al carrito 
-(Sé que estos ultimos dos puntos seria mejor diseñarlos de otra manera, pero como otras cosas de este tipo, preferí obviarlas para entregar cuanto antes)
 
-7. Sugeridos
+## Autenticación
 
-Muestra 4 productos aleatorios desde la API cada vez que se entra.
+### Login
 
-8. Últimos días
+- **/login** el usuario ingresa con: 
+                                    - `Usuario` 
+                                    - `Contraseña` 
 
-Muestra los últimos 4 productos del listado.
+```js 
+const USUARIOS_FAKE = [
+  { 
+    id: 1, 
+    usuario: 'admin', 
+    contrasenia: '1234', 
+    rol: 'admin',
+    nombre: 'Admin'
+  },
+  { 
+    id: 2, 
+    usuario: 'maria', 
+    contrasenia: '1234', 
+    rol: 'usuario',
+    nombre: 'Maria'
+  }
+];
+```
 
-9. Autenticación
+- **Roles**
+- `rol: 'admin'`: Permite acceder al panel /admin y ver las funciones de gestión.
 
-✔️ Login
+- `rol: 'usuario'`: Permite iniciar sesión y acceder al carrito.
 
-En /login, el usuario ingresa con:
+- **Si es válido muestra**
 
-Usuario y Contraseña
+-`Botón Cerrar sesión` 
+-`Si es admin → acceso a /admin` 
+-`Si es usuario comun → acceso a /carrito` 
 
-Si es válido:
+## Estructura del proyecto
 
--Se muestra "Hola, nombre"
+```
+src/
+├── assets/
+│   ├── BagIcon.jsx
+│   ├── CirclePlus.jsx
+│   ├── react.svg
+│   ├── SquarePen.jsx
+│   ├── TrashIcon.jsx
+│   ├── UserIcon.jsx
+│   └── X.jsx
+│
+├── components/
+│   ├── BarraBusqueda.jsx
+│   ├── Carrito.jsx
+│   ├── Footer.jsx
+│   ├── Footer.module.css
+│   ├── FormProducto.jsx
+│   ├── FormProducto.module.css
+│   ├── Formulario.jsx
+│   ├── GestionProducto.jsx
+│   ├── GestionProducto.module.css
+│   ├── Header.jsx
+│   ├── Header.module.css
+│   ├── NavBar.jsx
+│   ├── Navbar.module.css
+│   ├── productos.jsx
+│   ├── Productos.module.css
+│   ├── ResultadosBusqueda.jsx
+│   └── RutaProtegida.jsx
+│
+├── context/
+│   ├── AuthContext.jsx
+│   ├── BusquedaContext.jsx
+│   ├── CarritoContext.jsx
+│   └── ProductosContext.jsx
+│
+├── pages/
+│   ├── Admin.jsx
+│   ├── detalleSugerido.jsx
+│   ├── DetalleUltimosdias.jsx
+│   ├── Login.jsx
+│   ├── ProductoDetalle.jsx
+│   ├── Productos.jsx
+│   ├── sugeridos.jsx
+│   └── ultimosdias.jsx
+│
+├── App.jsx
+├── index.css
+├── main.jsx
+│
+├── index.html
+```
 
--Botón Cerrar sesión
+## Tecnologías utilizadas
 
--Acceso al carrito
+- React
 
--Si es admin → acceso a /admin
+- React Router DOM
 
-🔑 Usuarios de prueba (para corrección)
+- Context API
 
-👑 Administrador
+- Tailwind CSS
 
-Usuario: admin
+- CSS Modules
 
-Contraseña: 1234
+- MockAPI
 
-(Permite acceder al panel /admin y ver las funciones de gestión.)
+- Vercel
 
-👤 Usuario común
-
-Usuario: maria
-
-Contraseña: 1234
-
-(Permite iniciar sesión y acceder al carrito.)
-
-10. Roles y protección de rutas
-
-El proyecto usa Context API + RutaProtegida.
-
-🔒 Usuarios NO logueados:
-
-No pueden acceder a /carrito
-
-No pueden acceder a /admin
-
-Son redirigidos a /login
-
-11. Administradores:
-
-Acceso exclusivo a /admin
-
-Vista especial para gestión 
-
-12. Carrito de compras
-
-Desde cualquier sección se puede:
-
-Agregar productos al carrito.
-
-Ver el contador en el header.
-
-En /carrito se muestra:
-
-Lista de productos
-
-Total
-
-Botón para eliminar items
-
-Todo manejado mediante CarritoContext.
-
-13. Tecnologías utilizadas
-
-React
-
-React Router DOM
-
-Context API
-
-Tailwind CSS
-
-CSS Modules
-
-MockAPI
-
-Vercel
-
-14. Deploy
+## Deploy
 
 El proyecto está desplegado en Vercel: https://pre-entrega-cabaleiro-aran-mariam.vercel.app/ 
 (Se recomienda copiar y pegar este enñace, no clickearlo directamente, ya que al hacerlo de este modo pedir permisos)
-
---------------------------------------------------------------------------------------------------------------------------------------
-
-En lineas generales prioricé el funcionamiento general y la pronta entrega por sobre algunas cuestiones de diseño especificas, aunque entiendo que algunas harían que la experiencia del usuario sea superadora.
 

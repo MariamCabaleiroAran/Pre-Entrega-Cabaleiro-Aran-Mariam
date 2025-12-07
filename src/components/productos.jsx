@@ -1,6 +1,4 @@
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { CarritoContext } from '../context/CarritoContext';
 import { useProductosContext } from "../context/ProductosContext";
 import styles from './Productos.module.css';
 import { useState } from 'react';
@@ -9,7 +7,6 @@ const Productos = () => {
   
   // Usamos los contextos 
   const { productos, cargando, error } = useProductosContext();
-  const { agregarAlCarrito } = useContext(CarritoContext);
 
     // Logica de Paginacion 
   const productosPorPagina = 8; 
@@ -44,14 +41,6 @@ return (
 </h3>
           <p>${producto.precio}</p>
           <div className="flex gap-3 mt-3">
-  <button
-    onClick={() => agregarAlCarrito(producto)}
-    className="px-4 py-2 border border-gray-800 text-gray-800 rounded-lg 
-               hover:bg-gray-800 hover:text-white transition-all duration-200
-               active:scale-95"
-  >
-    Agregar
-  </button>
 
   <Link
     to={`/ultimosdias/${producto.id}`}
@@ -59,7 +48,7 @@ return (
              hover:bg-gray-800 hover:text-white transition-all duration-200
              active:scale-95 no-underline-important"
   >
-    Detalles
+        Ver producto
   </Link>
 </div>
         </div>

@@ -12,12 +12,17 @@ import Footer from './components/Footer.jsx';
 import Sugeridos from "./pages/sugeridos.jsx";
 import Login from "./pages/Login";
 import ResultadosBusqueda from "./components/ResultadosBusqueda";
+import { Helmet } from "react-helmet-async";
 
 function App() {
 
   return (
     <>
     <div className="grid min-h-dvh grid-rows-[auto_1fr_auto]">
+      <Helmet>
+        <title>Uroko Tienda</title>
+        <meta name="description" content="Descubrí productos de bazar, artículos para el hogar y opciones destacadas en Uroko Tienda. Explorá nuestro catálogo y gestioná tus compras fácilmente." />
+      </Helmet>
       <Header />
       <Routes>
         <Route path="/" element={<Inicio />} />
